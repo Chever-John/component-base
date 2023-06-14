@@ -3,9 +3,10 @@ package flag
 import (
 	"bytes"
 	"fmt"
-	"github.com/spf13/pflag"
 	"io"
 	"strings"
+
+	"github.com/spf13/pflag"
 )
 
 // NamedFlagSets stores named flag sets in the order of calling FlagSet.
