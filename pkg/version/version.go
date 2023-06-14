@@ -8,7 +8,7 @@ import (
 
 	"github.com/gosuri/uitable" //nolint:gci
 
-	"github.com/Chever-John/component-base/pkg/json" //nolint:gci
+	"github.com/Chever-John/component-base/pkg/json"
 )
 
 var (
