@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/gosuri/uitable"
+	"github.com/gosuri/uitable" //nolint:gci
 
-	"github.com/Chever-John/component-base/pkg/json"
+	"github.com/Chever-John/component-base/pkg/json" //nolint:gci
 )
 
 var (

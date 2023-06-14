@@ -7,31 +7,31 @@ import (
 	"os"
 	"strconv"
 
-	flag "github.com/spf13/pflag"
+	flag "github.com/spf13/pflag" //nolint:gci
 
-	"github.com/Chever-John/component-base/pkg/version"
+	"github.com/Chever-John/component-base/pkg/version" //nolint:gci
 )
 
-type versionValue int
+type VersionValue int
 
 // Define some const.
 const (
-	VersionFalse versionValue = 0
-	VersionTrue  versionValue = 1
-	VersionRaw   versionValue = 2
+	VersionFalse VersionValue = 0
+	VersionTrue  VersionValue = 1
+	VersionRaw   VersionValue = 2
 )
 
 const strRawVersion string = "raw"
 
-func (v *versionValue) IsBoolFlag() bool {
+func (v *VersionValue) IsBoolFlag() bool {
 	return true
 }
 
-func (v *versionValue) Get() interface{} {
+func (v *VersionValue) Get() interface{} {
 	return v
 }
 
-func (v *versionValue) Set(s string) error {
+func (v *VersionValue) Set(s string) error {
 	if s == strRawVersion {
 		*v = VersionRaw
 		return nil
@@ -45,7 +45,7 @@ func (v *versionValue) Set(s string) error {
 	return err
 }
 
-func (v *versionValue) String() string {
+func (v *VersionValue) String() string {
 	if *v == VersionRaw {
 		return strRawVersion
 	}
@@ -53,12 +53,12 @@ func (v *versionValue) String() string {
 }
 
 // The type of the flag as required by the pflag.Value interface.
-func (v *versionValue) Type() string {
+func (v *VersionValue) Type() string {
 	return "version"
 }
 
 // VersionVar defines a flag with the specified name and usage string.
-func VersionVar(p *versionValue, name string, value versionValue, usage string) {
+func VersionVar(p *VersionValue, name string, value VersionValue, usage string) {
 	*p = value
 	flag.Var(p, name, usage)
 	// "--version" will be treated as "--version=true"
@@ -66,8 +66,8 @@ func VersionVar(p *versionValue, name string, value versionValue, usage string) 
 }
 
 // Version wraps the VersionVar function.
-func Version(name string, value versionValue, usage string) *versionValue {
-	p := new(versionValue)
+func Version(name string, value VersionValue, usage string) *VersionValue {
+	p := new(VersionValue)
 	VersionVar(p, name, value, usage)
 	return p
 }

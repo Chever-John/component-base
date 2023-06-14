@@ -9,7 +9,7 @@ import (
 )
 
 // WordSepNormalizeFunc changes all flags that contain "_" separators.
-func WordSepNormalizeFunc(f *pflag.FlagSet, name string) pflag.NormalizedName {
+func WordSepNormalizeFunc(_ *pflag.FlagSet, name string) pflag.NormalizedName {
 	if strings.Contains(name, "_") {
 		return pflag.NormalizedName(strings.ReplaceAll(name, "_", "-"))
 	}
@@ -17,7 +17,7 @@ func WordSepNormalizeFunc(f *pflag.FlagSet, name string) pflag.NormalizedName {
 }
 
 // WarnWordSepNormalizeFunc changes and warns for flags that contain "_" separators.
-func WarnWordSepNormalizeFunc(f *pflag.FlagSet, name string) pflag.NormalizedName {
+func WarnWordSepNormalizeFunc(_ *pflag.FlagSet, name string) pflag.NormalizedName {
 	if strings.Contains(name, "_") {
 		nname := strings.ReplaceAll(name, "_", "-")
 		log.Warnf("%s is DEPRECATED and will be removed in a future version. Use %s instead.", name, nname)
